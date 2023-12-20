@@ -689,14 +689,14 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String & Attribute.Required & Attribute.Unique;
-    Description: Attribute.Blocks;
-    Image: Attribute.Media;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    image: Attribute.Media;
     categories: Attribute.Relation<
       'api::blog.blog',
       'manyToMany',
       'api::category.category'
     >;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -719,7 +719,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String & Attribute.Required & Attribute.Unique;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
     blogs: Attribute.Relation<
       'api::category.category',
       'manyToMany',
